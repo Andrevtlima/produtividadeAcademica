@@ -102,6 +102,14 @@ public class Produtividade {
 				throw new InputMismatchException();
 			}
 			else{
+				switch (escolha) {
+				case 1:
+					
+					break;
+
+				default:
+					break;
+				}
 				
 			}
 		} catch (InputMismatchException e) {
