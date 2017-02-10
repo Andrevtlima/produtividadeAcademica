@@ -10,7 +10,7 @@ import projetos.Projeto;
 
 public class Produtividade {
 	private Scanner scanner = new Scanner(System.in);
-	Admin admin = null;
+	private Admin admin = null;
 	
 	public String getName() throws NoSuchElementException{
 		System.out.println("Digite o nome:\n");
@@ -58,13 +58,13 @@ public class Produtividade {
 		
 		switch (escolha) {
 		case 0:
-			if(admin == null){
+			if(this.admin == null){
 				try {
-					admin = createAdmin();
+					this.admin = createAdmin();
 					System.out.println("Logado com sucesso.\n");
 					this.menu();
 				} catch (Exception e) {
-					System.out.println("Argumento invalido");
+					System.out.println("Dado errado");
 				}
 				
 			}
@@ -88,8 +88,28 @@ public class Produtividade {
 		
 	}
 	public void menu(){
-		
+		System.out.println("-----------Menu-----------");
+		System.out.println("1-----------Gerenciar projetos");
+		System.out.println("2-----------Gerenciar colaboradores");
+		System.out.println("3-----------Gerenciar Produções");
+		System.out.println("4-----------Mudar Admin");
+		System.out.println("5-----------Sair");
+		int escolha;
+		try {
+			
+			escolha = scanner.nextInt();
+			if(escolha>5 || escolha <1){
+				throw new InputMismatchException();
 			}
+			else{
+				
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Digite um número válido");
+			this.menu();
+		}
+
+	}
 	public static void main(String[] args){
 		Produtividade prod = new Produtividade();
 		prod.start();
