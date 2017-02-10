@@ -2,15 +2,26 @@ package produtividadeacademica;
 
 import java.security.InvalidParameterException;
 import java.util.InputMismatchException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import pessoa.Admin;
+import pessoa.Estudante;
+import pessoa.Professor;
+import producoes.Orientacoes;
+import producoes.Publicacoes;
 import projetos.Projeto;
 
 public class Produtividade {
 	private Scanner scanner = new Scanner(System.in);
 	private Admin admin = null;
+	private List<Professor> professores = new LinkedList<Professor>();
+	private List<Projeto> projetos = new LinkedList<Projeto>();
+	private List<Estudante> estudantes = new LinkedList<Estudante>();
+	private List<Publicacoes> publicacoes = new LinkedList<Publicacoes>();
+	private List<Orientacoes> orientacoes = new LinkedList<Orientacoes>();
 	
 	public String getName() throws NoSuchElementException{
 		System.out.println("Digite o nome:\n");
@@ -104,7 +115,7 @@ public class Produtividade {
 			else{
 				switch (escolha) {
 				case 1:
-					
+					this.gerenciarProj();
 					break;
 
 				default:
@@ -117,6 +128,9 @@ public class Produtividade {
 			this.menu();
 		}
 
+	}
+	public void gerenciarProj(){
+		
 	}
 	public static void main(String[] args){
 		Produtividade prod = new Produtividade();
