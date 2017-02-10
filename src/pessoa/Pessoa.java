@@ -5,33 +5,34 @@ public class Pessoa {
 	private int age;
 	private String cpf;
 	private String email;
-	protected String getEmail() {
+	public String getEmail() {
 		return email;
 	}
-	protected void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	protected String getName() {
+	public String getName() {
 		return name;
 	}
-	protected void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	protected int getAge() {
+	public int getAge() {
 		return age;
 	}
-	protected void setAge(int age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
-	protected String getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	protected void setCpf(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public Pessoa(String name, String cpf, String email) {
 		super();
 		this.name = name;
+
 		this.cpf = cpf;
 		this.email = email;
 	}

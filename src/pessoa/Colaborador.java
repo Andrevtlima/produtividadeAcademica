@@ -3,11 +3,11 @@ package pessoa;
 public class Colaborador extends Pessoa {
 	private String idCadastro;
 
-	protected String getidCadastro() {
+	public String getidCadastro() {
 		return idCadastro;
 	}
 
-	protected void setId_cadastro(String idCadastro) {
+	public void setId_cadastro(String idCadastro) {
 		this.idCadastro = idCadastro;
 	}
 
