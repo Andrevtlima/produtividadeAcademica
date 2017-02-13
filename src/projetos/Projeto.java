@@ -8,8 +8,8 @@ import pessoa.Colaborador;
 
 public class Projeto {
 	private String titulo;
-	private Date dateInicio;
-	private Date dateFim;
+	private String dateInicio;
+	private String dateFim;
 	private String agFinan;
 	private Double valorFinan;
 	private String objetivo;
@@ -23,7 +23,7 @@ public class Projeto {
 		this.state = state;
 	}
 	
-	public Projeto(String titulo, Date dateInicio, Date dateFim, String agFinan, Double valorFinan, String objetivo,
+	public Projeto(String titulo, String dateInicio, String dateFim, String agFinan, Double valorFinan, String objetivo,
 			String descricao, List<Colaborador> participantes) {
 		super();
 		this.titulo = titulo;
@@ -36,12 +36,12 @@ public class Projeto {
 		this.participantes = participantes;
 		this.state = "Em elaboração";
 	}
-	public Projeto(String titulo, Date dateInicio, Date dateFim, String agFinan, Double valorFinan, String objetivo,
+	public Projeto(String titulo, String dateIn, String dateOut, String agFinan, Double valorFinan, String objetivo,
 			String descricao) {
 		super();
 		this.titulo = titulo;
-		this.dateInicio = dateInicio;
-		this.dateFim = dateFim;
+		this.dateInicio = dateIn;
+		this.dateFim = dateOut;
 		this.agFinan = agFinan;
 		this.valorFinan = valorFinan;
 		this.objetivo = objetivo;
@@ -55,16 +55,16 @@ public class Projeto {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public Date getDateInicio() {
+	public String getDateInicio() {
 		return dateInicio;
 	}
-	public void setDateInicio(Date dateInicio) {
+	public void setDateInicio(String dateInicio) {
 		this.dateInicio = dateInicio;
 	}
-	public Date getDateFim() {
+	public String getDateFim() {
 		return dateFim;
 	}
-	public void setDateFim(Date dateFim) {
+	public void setDateFim(String dateFim) {
 		this.dateFim = dateFim;
 	}
 	public String getAgFinan() {

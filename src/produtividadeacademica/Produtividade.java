@@ -28,6 +28,43 @@ public class Produtividade {
 		String name = scanner.nextLine();
 		return name;
 	}
+	public String getTitle() throws NoSuchElementException{
+		System.out.println("Digite o titulo:\n");
+		String title = scanner.nextLine();
+		return title;
+	}
+	public String getDateIn() throws NoSuchElementException{
+		System.out.println("Digite a data de início:\n");
+		String dateIn = scanner.nextLine();
+		return dateIn;
+	}
+	public String getDateOut() throws NoSuchElementException{
+		System.out.println("Digite a data de término:\n");
+		String dateout = scanner.nextLine();
+		return dateout;
+	}
+	public String getAgFin() throws NoSuchElementException{
+		System.out.println("Digite a agência financiadora:\n");
+		String aux = scanner.nextLine();
+		return aux;
+	}
+	public String getObj() throws NoSuchElementException{
+		System.out.println("Digite o objetivo:\n");
+		String aux = scanner.nextLine();
+		return aux;
+	}
+	public double getValor() throws NoSuchElementException, InputMismatchException{
+		System.out.println("Digite o valor financiado:\n");
+		double aux = scanner.nextDouble();
+		scanner.nextLine();
+		return aux;
+	}
+	public String getDescricao() throws NoSuchElementException{
+		System.out.println("Digite a descricao:\n");
+		String aux = scanner.nextLine();
+		return aux;
+	}
+	
 	public String getId() throws NoSuchElementException{
 		System.out.println("Digite o Id:\n");
 		String id = scanner.nextLine();
@@ -62,9 +99,11 @@ public class Produtividade {
 	
 	public void start(){
 		System.out.println("Para fazer login digite 1, para criar o perfil de professor/admin digite 0:\n");
+		this.admin = new Admin("123", "Adnre", "78945613456", "suahusahuas@ic.ufal.br", "123456");
 		try {
-			int escolha = this.scanner.nextInt();
-			scanner.nextLine();
+			int escolha = 0;
+			escolha = this.scanner.nextInt();
+			this.scanner.nextLine();
 		
 		
 		switch (escolha) {
@@ -84,10 +123,16 @@ public class Produtividade {
 			}
 			break;
 		case 1:
-			System.out.println("Digite o id do admin, seguido da senha:\n");
-			if(scanner.nextLine() == admin.getidCadastro() && scanner.nextLine() == admin.getSenha()){
+			String id = this.getId();
+			String senha = this.getSenha();
+			
+			if(id.equals(admin.getidCadastro())  && senha.equals(admin.getSenha())){
 				System.out.println("Logado com sucesso.\n");
 				this.menu();
+			}
+			else{
+				System.out.println("Id ou Senha incorreto(s)");
+				this.start();
 			}
 		default:
 			break;
@@ -95,6 +140,8 @@ public class Produtividade {
 		
 		} catch (InputMismatchException e) {
 			System.out.println("Argumento invalido");
+			this.scanner.nextLine();
+			this.start();
 		}
 		
 	}
@@ -109,6 +156,7 @@ public class Produtividade {
 		try {
 			
 			escolha = scanner.nextInt();
+			scanner.nextLine();
 			if(escolha>5 || escolha <1){
 				throw new InputMismatchException();
 			}
@@ -125,14 +173,66 @@ public class Produtividade {
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("Digite um número válido");
+			scanner.nextLine();
 			this.menu();
 		}
 
 	}
 	public void gerenciarProj(){
+		System.out.println("----------Projetos----------");
+		System.out.println("1---------Cadastrar novo projeto");
+		System.out.println("2---------Editar proj existente");
+		System.out.println("3---------Sair");
+		int escolha;
+		try {
+			
+			escolha = scanner.nextInt();
+			scanner.nextLine();
+			if(escolha>3 || escolha <1 ){
+				throw new InputMismatchException();
+			}
+			else{
+				switch (escolha) {
+				case 1:
+					Projeto newProj = new Projeto();
+					newProj = this.newProj();
+					break;
+
+				default:
+					break;
+				}
+				
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Digite um número válido");
+			scanner.nextLine();
+			this.gerenciarProj();
+		}
 		
 	}
+	public Projeto newProj(){
+		String title = getTitle();
+		String dateIn = getDateIn();
+		String dateOut = getDateOut();
+		String agFin = getAgFin();
+		double valor = 0;
+		try {
+			valor = getValor();
+		} catch (InputMismatchException e) {
+			System.out.println("Digite um valor valido");
+			valor = getValor();
+		}
+		
+		String obj = getObj();
+		String descricao = getDescricao();
+		Projeto projAux = new Projeto(title,dateIn,dateOut,agFin,valor, obj, descricao);
+		
+		
+	
+		return null;
+	}
 	public static void main(String[] args){
+		
 		Produtividade prod = new Produtividade();
 		prod.start();
 	}
